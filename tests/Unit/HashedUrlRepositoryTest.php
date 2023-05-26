@@ -13,6 +13,9 @@ class HashedUrlRepositoryTest extends TestCase
      */
     private $hashedUrlRepository;
 
+    /**
+     * @return void
+     */
     public function setUp() : void
     {
         parent::setUp();
