@@ -25,11 +25,11 @@ Payload:- {
 }
 
 Response:- {
-  "url": "http://hashing.testing/hashed-urls/1ad5be0d"
+  "url": "http://127.0.0.1:8000/hashed-urls/1ad5be0d"
 }
 
 Redirection to URL:-
 
-GET http://hashing.testing/hashed-urls/1ad5be0d
+GET http://127.0.0.1:8000/hashed-urls/1ad5be0d
 
 It will redirect us to the URL attached with this hashed URL.
