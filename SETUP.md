@@ -8,11 +8,21 @@ composer install
 
  - Please check `ASSUMPTIONS.md` if it gives an error.
 
+Create a database with name `hashing`
+
 cp .env.example .env
 
 php artisan key:generate
 
 php artisan migrate
+
+  - You should be properly configured below values to make this command run successfully
+
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=hashing
+    DB_USERNAME=root
+    DB_PASSWORD= 
 
 php artisan serve
 
