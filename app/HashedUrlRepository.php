@@ -9,7 +9,7 @@ class HashedUrlRepository
      *
      * @return HashedUrl | null
      */
-    public function findByUrl(string $url) : ?HashedUrl
+    private function findByUrl(string $url) : ?HashedUrl
     {
         return HashedUrl::byUrl($url)->first();
     }
