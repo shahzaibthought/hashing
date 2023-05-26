@@ -54,7 +54,7 @@ class HashedUrlRepository
      *
      * @return int
      */
-    private function clicks(int $clicks) : int
+    private function clicksToInsert(int $clicks) : int
     {
         return $clicks + 1;
     }
@@ -68,7 +68,7 @@ class HashedUrlRepository
     {
         $existingClicks = $hashedUrl->clicks();
 
-        $hashedUrl->setClicks($this->clicks($existingClicks))->save();
+        $hashedUrl->setClicks($this->clicksToInsert($existingClicks))->save();
     }
 
     /**
