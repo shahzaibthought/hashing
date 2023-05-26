@@ -16,8 +16,8 @@ class CreateHashedUrlsTable extends Migration
         Schema::create('hashed_urls', function (Blueprint $table) {
             $table->id();
             $table->text('url');
-            $table->string('hashed_url', 25);
-            $table->unsignedInteger('clicks');
+            $table->string('hash', 25)->nullable();
+            $table->unsignedInteger('clicks')->default(0);
             $table->timestamps();
         });
     }
