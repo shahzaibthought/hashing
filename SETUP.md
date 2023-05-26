@@ -33,3 +33,7 @@ Redirection to URL:-
 GET http://127.0.0.1:8000/hashed-urls/1ad5be0d
 
 It will redirect us to the URL attached with this hashed URL.
+
+## Run the tests:-
+
+php artisan test tests/Unit/HashedUrlRepositoryTest.php
