@@ -58,4 +58,36 @@ class HashedUrlRepositoryTest extends TestCase
 
         $this->assertSame($expectedClicksToInsert, $actualClicksToInsert);
     }
+
+    /**
+     * @return array
+     */
+    public function providerTestGenerateHash() : array
+    {
+        return [
+            [
+                '1',
+                '83dcefb7',
+            ],
+            [
+                '100',
+                '237750ea',
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider providerTestGenerateHash
+     *
+     * @return void
+     */
+    public function testGenerateHash(string $valueToBeHashed, string $expectedHash)
+    {
+        $hashedUrlRepository = new ReflectionClass(HashedUrlRepository::class);
+        $method = $hashedUrlRepository->getMethod('generateHash');
+        $method->setAccessible(true);
+        $actualHash = $method->invokeArgs($this->hashedUrlRepository, [$valueToBeHashed]);
+
+        $this->assertSame($expectedHash, $actualHash);
+    }
 }
