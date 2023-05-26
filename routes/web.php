@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('hashed-urls/{id}', 'HashedUrlController@show')->name('web.hashed.urls.show');
