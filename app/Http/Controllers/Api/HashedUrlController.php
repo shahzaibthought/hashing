@@ -21,7 +21,7 @@ class HashedUrlController extends Controller
             $urlHash = $repository->urlHash($request->url());
 
             return response()->json([
-                'url' => route('web.hashed.urls.show', ['id' => $urlHash]),
+                'url' => route('web.hashed.urls.show', ['hash' => $urlHash]),
             ], 200);
         } catch (\Exception $e) {
             \Log::error('Error while generating the URL hash', ['message' => $e->getTraceAsString()]);

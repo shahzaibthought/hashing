@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('hashed-urls/{id}', 'HashedUrlController@show')->name('web.hashed.urls.show');
+Route::get('hashed-urls/{hash}', 'HashedUrlController@show')->name('web.hashed.urls.show');
