@@ -46,6 +46,10 @@ class HashedUrlRepositoryTest extends TestCase
 
     /**
      * @dataProvider providerTestClicksToInsert
+     * @covers HashedUrlRepository::increaseUrlClicks
+     *
+     * @param int $existingClicks
+     * @param int $expectedClicksToInsert
      *
      * @return void
      */
@@ -82,6 +86,10 @@ class HashedUrlRepositoryTest extends TestCase
 
     /**
      * @dataProvider providerTestGenerateHash
+     * @covers HashedUrlRepository::generateHash
+     *
+     * @param string $valueToBeHashed
+     * @param string $expectedHash
      *
      * @return void
      */
