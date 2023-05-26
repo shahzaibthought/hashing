@@ -14,6 +14,8 @@ class HashedUrlController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        return 'Welcome to HashedUrlController ... Good bye!';
+        $url = $request->url();
+
+        return $url;
     }
 }

@@ -24,7 +24,15 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'url' => 'required|url',
         ];
+    }
+
+    /**
+     * @return string
+     */
+    public function url() : string
+    {
+        return $this->input('url');
     }
 }
