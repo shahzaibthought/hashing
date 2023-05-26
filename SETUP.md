@@ -1,6 +1,6 @@
 ## Steps To Clone Project:-
 
-Git clone:- git clone git@github.com:shahzaibthought/hashing.git
+git clone git@github.com:shahzaibthought/hashing.git
 
 cd hashing
 
