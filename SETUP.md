@@ -6,6 +6,8 @@ cd hashing
 
 composer install
 
+ - Please check `ASSUMPTIONS.md` if it give error.
+
 cp .env.example .env
 
 php artisan key:generate
