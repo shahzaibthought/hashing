@@ -73,6 +73,10 @@ class HashedUrlRepositoryTest extends TestCase
                 '100',
                 '237750ea',
             ],
+            [
+                '4294967294',
+                '2cccf8dd',
+            ]
         ];
     }
 
