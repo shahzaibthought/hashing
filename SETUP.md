@@ -6,7 +6,7 @@ cd hashing
 
 composer install
 
- - Please check `ASSUMPTIONS.md` if it give error.
+ - Please check `ASSUMPTIONS.md` if it gives an error.
 
 cp .env.example .env
 
