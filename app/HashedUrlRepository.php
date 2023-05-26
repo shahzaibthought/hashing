@@ -15,6 +15,16 @@ class HashedUrlRepository
     }
 
     /**
+     * @param string $hash
+     *
+     * @return HashedUrl | null
+     */
+    public function findByHash(string $hash) : ?HashedUrl
+    {
+        return HashedUrl::byHash($hash)->first();
+    }
+
+    /**
      * @param string $url
      *
      * @return HashedUrl
@@ -37,6 +47,28 @@ class HashedUrlRepository
     private function updateUrlHash(HashedUrl $hashedUrl, string $hash)
     {
         $hashedUrl->setHash($hash)->save();
+    }
+
+    /**
+     * @param int $clicks
+     *
+     * @return int
+     */
+    private function clicks(int $clicks) : int
+    {
+        return $clicks + 1;
+    }
+
+    /**
+     * @param HashedUrl $hashedUrl
+     *
+     * @return void
+     */
+    private function increaseUrlClicks(HashedUrl $hashedUrl)
+    {
+        $existingClicks = $hashedUrl->clicks();
+
+        $hashedUrl->setClicks($this->clicks($existingClicks))->save();
     }
 
     /**
@@ -70,5 +102,23 @@ class HashedUrlRepository
         $this->updateUrlHash($hashedUrl, $hash);
 
         return $hash;
+    }
+
+    /**
+     * @param string $hash
+     *
+     * @return string
+     */
+    public function url(string $hash) : string
+    {
+        $hashedUrl = $this->findByHash($hash);
+
+        if (! empty($hashedUrl)) {
+            $this->increaseUrlClicks($hashedUrl);
+
+            return $hashedUrl->url();
+        }
+
+        return '';
     }
 }

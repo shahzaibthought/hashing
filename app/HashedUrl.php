@@ -18,9 +18,25 @@ class HashedUrl extends Model
     /**
      * @return string
      */
+    public function url() : string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @return string
+     */
     public function hash() : string
     {
         return $this->hash;
+    }
+
+    /**
+     * @return int
+     */
+    public function clicks() : int
+    {
+        return $this->clicks;
     }
 
     /**
@@ -48,6 +64,18 @@ class HashedUrl extends Model
     }
 
     /**
+     * @param int $clicks
+     *
+     * @return self
+     */
+    public function setClicks(int $clicks) : self
+    {
+        $this->clicks = $clicks;
+
+        return $this;
+    }
+
+    /**
      * @param Builder $query
      * @param string $url
      *
@@ -56,5 +84,16 @@ class HashedUrl extends Model
     public function scopeByUrl(Builder $query, string $url) : Builder
     {
         return $query->where('url', $url);
+    }
+
+    /**
+     * @param Builder $query
+     * @param string $hash
+     *
+     * @return Builder
+     */
+    public function scopeByHash(Builder $query, string $hash) : Builder
+    {
+        return $query->where('hash', $hash);
     }
 }
