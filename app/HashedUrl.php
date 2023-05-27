@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -37,6 +38,22 @@ class HashedUrl extends Model
     public function clicks() : int
     {
         return $this->clicks;
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function createdAt() : Carbon
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function updatedAt() : Carbon
+    {
+        return $this->updated_at;
     }
 
     /**
