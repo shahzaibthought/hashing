@@ -55,10 +55,10 @@ class HashedUrlController extends Controller
                 'error' => 'The URL was\'t found.',
             ], 404);
         } catch (\Exception $e) {
-            \Log::error('Error while getting the URL back', ['message' => $e->getTraceAsString()]);
+            \Log::error('Error while getting the URL statistics', ['message' => $e->getTraceAsString()]);
 
             return response()->json([
-                'error' => 'There has been some errors while getting the URL.',
+                'error' => 'There has been some errors while getting the URL statistics.',
             ], 500);
         }
     }
