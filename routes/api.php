@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('hashed-urls', 'HashedUrlController@store');
+Route::get('hashed-urls/{hash}', 'HashedUrlController@show');

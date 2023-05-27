@@ -31,4 +31,35 @@ class HashedUrlController extends Controller
             ], 500);
         }
     }
+
+    /**
+     * @param HashedUrlRepository $repository
+     * @param string $hash
+     *
+     * @return mixed
+     */
+    public function show(HashedUrlRepository $repository, string $hash)
+    {
+        try {
+            $hashedUrl = $repository->findByHash($hash);
+
+            if (! empty($hashedUrl)) {
+                return response()->json([
+                    'url' => $hashedUrl->url(),
+                    'hashedUrl' => route('web.hashed.urls.show', ['hash' => $hashedUrl->hash()]),
+                    'clicks' => $hashedUrl->clicks(),
+                ], 200);
+            }
+
+            return response()->json([
+                'error' => 'The URL was\'t found.',
+            ], 404);
+        } catch (\Exception $e) {
+            \Log::error('Error while getting the URL back', ['message' => $e->getTraceAsString()]);
+
+            return response()->json([
+                'error' => 'There has been some errors while getting the URL.',
+            ], 500);
+        }
+    }
 }
