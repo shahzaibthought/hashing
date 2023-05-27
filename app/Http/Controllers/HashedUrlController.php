@@ -15,10 +15,12 @@ class HashedUrlController extends Controller
     public function show(HashedUrlRepository $repository, string $hash)
     {
         try {
-            $url = $repository->url($hash);
+            $hashedUrl = $repository->findByHash($hash);
 
-            if (! empty($url)) {
-                return redirect($url);
+            if (! empty($hashedUrl)) {
+                $repository->increaseUrlClicks($hashedUrl);
+
+                return redirect($hashedUrl->url());
             }
 
             return response()->json([

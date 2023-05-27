@@ -64,7 +64,7 @@ class HashedUrlRepository
      *
      * @return void
      */
-    private function increaseUrlClicks(HashedUrl $hashedUrl)
+    public function increaseUrlClicks(HashedUrl $hashedUrl)
     {
         $existingClicks = $hashedUrl->clicks();
 
@@ -102,23 +102,5 @@ class HashedUrlRepository
         $this->updateUrlHash($hashedUrl, $hash);
 
         return $hashedUrl;
-    }
-
-    /**
-     * @param string $hash
-     *
-     * @return string
-     */
-    public function url(string $hash) : string
-    {
-        $hashedUrl = $this->findByHash($hash);
-
-        if (! empty($hashedUrl)) {
-            $this->increaseUrlClicks($hashedUrl);
-
-            return $hashedUrl->url();
-        }
-
-        return '';
     }
 }
