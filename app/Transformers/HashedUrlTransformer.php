@@ -16,6 +16,7 @@ class HashedUrlTransformer
 		return [
 			'id' => $hashedUrl->id(),
             'url' => $hashedUrl->url(),
+            'hash' => $hashedUrl->hash(),
             'hashedUrl' => route('web.hashed.urls.show', ['hash' => $hashedUrl->hash()]),
             'clicks' => $hashedUrl->clicks(),
             'createdAt' => $hashedUrl->createdAt(),
