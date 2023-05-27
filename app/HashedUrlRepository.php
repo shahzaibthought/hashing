@@ -35,7 +35,7 @@ class HashedUrlRepository
         $hashedUrl = $hashedUrl->setUrl($url);
         $hashedUrl->save();
 
-        return $hashedUrl;
+        return $hashedUrl->fresh();
     }
 
     /**
@@ -86,14 +86,14 @@ class HashedUrlRepository
     /**
      * @param string $url
      *
-     * @return string
+     * @return HashedUrl
      */
-    public function urlHash(string $url) : string
+    public function hashedUrl(string $url) : HashedUrl
     {
         $hashedUrl = $this->findByUrl($url);
 
         if (! empty($hashedUrl)) {
-            return $hashedUrl->hash();
+            return $hashedUrl;
         }
 
         $hashedUrl = $this->saveUrl($url);
@@ -101,7 +101,7 @@ class HashedUrlRepository
 
         $this->updateUrlHash($hashedUrl, $hash);
 
-        return $hash;
+        return $hashedUrl;
     }
 
     /**
