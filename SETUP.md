@@ -32,7 +32,9 @@ Hashing of URL:-
 
 POST /api/hashed-urls
 
-Payload:- { 
+Example:- http://127.0.0.1:8000/api/hashed-urls
+
+Request payload:- {
   "url": "https://www.linkedin.com/company/zigsaw-consultancy-services/"
 }
 
